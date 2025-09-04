@@ -29,6 +29,30 @@ public class App {
             {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
             {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "}
         };
+        String[][] P1gameboard = {
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "}
+        };
+        String[][] P2gameboard = {
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
+            {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "}
+        };
 
         //player ones ships
         int p1ships = 0;
@@ -530,6 +554,65 @@ public class App {
 
 
             p2ships++;
+        }
+        
+        //Actuall game
+        int num4 = 0;
+        while (num4 <1) {
+            int num = 0;
+            System.out.print("    0   1   2   3   4   5   6   7   8   9");
+            while (num < 10) {
+                System.out.println();
+                System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
+                int num2 = 0;
+                
+                System.out.print(num + " ");
+                while (num2 < 10) {
+                    System.out.print("| " + P1gameboard[num][num2] + " ");
+                    num2++;
+                }
+                    System.out.print("|");
+                num++;
+            }
+        }
+        System.out.println("Enter the x value for where you want to hit");
+        int hitx = input.nextInt();
+        System.out.println("Enter the x value for where you want to hit");
+        int hity = input.nextInt();
+        if (P2startboard[hitx][hity] == " ") {
+            P1gameboard[hitx][hity] = "0";
+        }
+        else {
+            P1gameboard[hitx][hity] = "x";
+        }
+
+        //player two
+        int num = 0;
+            System.out.print("    0   1   2   3   4   5   6   7   8   9");
+            while (num < 10) {
+                System.out.println();
+                System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
+                int num2 = 0;
+                
+                System.out.print(num + " ");
+                while (num2 < 10) {
+                    System.out.print("| " + P2gameboard[num][num2] + " ");
+                    num2++;
+                }
+                    System.out.print("|");
+                num++;
+            }
+        System.out.println("Enter the x value for where you want to hit");
+        hitx = input.nextInt();
+        System.out.println("Enter the x value for where you want to hit");
+        hity = input.nextInt();
+        if (P1startboard[hitx][hity] == " ") {
+            P2gameboard[hitx][hity] = "0";
+        }
+        else {
+            P2gameboard[hitx][hity] = "x";
+
+            num4++;
         }
     }
 }
