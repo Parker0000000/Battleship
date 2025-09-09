@@ -1,3 +1,4 @@
+// tester h 0 0 v 0 1 h 1 1 h 1 2 v 8 8
 import java.util.Scanner;
 
 public class App {
@@ -56,7 +57,7 @@ public class App {
 
         //player ones ships
         int p1ships = 0;
-        while (p1ships < 1) {
+        
             System.out.println("Player one");
             
             int num = 0;
@@ -302,15 +303,15 @@ public class App {
             System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
 
 
-            p1ships++;
-        }
+            
+        
 
         //P2 ships
         int p2ships = 0;
-        while (p2ships < 1) {
+        
             System.out.println("Player two");
             
-            int num = 0;
+            num = 0;
             System.out.print("    0   1   2   3   4   5   6   7   8   9");
             while (num < 10) {
                 System.out.println();
@@ -331,15 +332,15 @@ public class App {
             //P1 ships
 
             //Aircraft Carrier
-            int num3 = 0;
+             num3 = 0;
             System.out.println("Select the direction of your aircraft carrier");
             System.out.println("H = horizontal V = vertical");
-            String V = input.next();
+             V = input.next();
             System.out.println("Select the back tile (5 spots)");
             System.out.print("Enter the x axis: ");
-            int x = input.nextInt();
+             x = input.nextInt();
             System.out.print("Enter the y axis: ");
-            int y = input.nextInt();
+             y = input.nextInt();
             if (V.equalsIgnoreCase("H")) {
                 while (num3 < 5) {
                     P2startboard[y][x] = "A";
@@ -553,13 +554,18 @@ public class App {
             System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
 
 
-            p2ships++;
-        }
+            
+        
         
         //Actuall game
         int num4 = 0;
-        while (num4 <1) {
-            int num = 0;
+        int counter = 0;
+        int counter2 = 0;
+        //player one
+
+        while (counter <= 17 || counter2 <= 17) {
+
+            num = 0;
             System.out.print("    0   1   2   3   4   5   6   7   8   9");
             while (num < 10) {
                 System.out.println();
@@ -574,20 +580,45 @@ public class App {
                     System.out.print("|");
                 num++;
             }
-        }
-        System.out.println("Enter the x value for where you want to hit");
-        int hitx = input.nextInt();
-        System.out.println("Enter the x value for where you want to hit");
-        int hity = input.nextInt();
-        if (P2startboard[hitx][hity] == " ") {
-            P1gameboard[hitx][hity] = "0";
-        }
-        else {
-            P1gameboard[hitx][hity] = "x";
-        }
+            System.out.println();
+            System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
+        
+            System.out.println("Enter the x value for where you want to hit");
+            int hitx = input.nextInt();
+            System.out.println("Enter the y value for where you want to hit");
+            int hity = input.nextInt();
+            if (P2startboard[hity][hitx] == " ") {
+                P1gameboard[hity][hity] = "o";
+            }
+            else {
+                P1gameboard[hity][hitx] = "x";
+                counter++;
+            }
+            num = 0;
+            System.out.print("    0   1   2   3   4   5   6   7   8   9");
+            while (num < 10) {
+                System.out.println();
+                System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
+                int num2 = 0;
+                
+                System.out.print(num + " ");
+                while (num2 < 10) {
+                    System.out.print("| " + P1gameboard[num][num2] + " ");
+                    num2++;
+                }
+                    System.out.print("|");
+                num++;
+            }
+            System.out.println();
+            System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
 
-        //player two
-        int num = 0;
+            //pause
+           // Thread.sleep(10000);
+    
+
+         //player two
+        
+            num = 0;
             System.out.print("    0   1   2   3   4   5   6   7   8   9");
             while (num < 10) {
                 System.out.println();
@@ -601,18 +632,49 @@ public class App {
                 }
                     System.out.print("|");
                 num++;
-            }
-        System.out.println("Enter the x value for where you want to hit");
-        hitx = input.nextInt();
-        System.out.println("Enter the x value for where you want to hit");
-        hity = input.nextInt();
-        if (P1startboard[hitx][hity] == " ") {
-            P2gameboard[hitx][hity] = "0";
-        }
-        else {
-            P2gameboard[hitx][hity] = "x";
+                 }
+                System.out.println();
+                System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
+                System.out.println("Enter the x value for where you want to hit");
+                hitx = input.nextInt();
+                System.out.println("Enter the y value for where you want to hit");
+                hity = input.nextInt();
+                if (P1startboard[hitx][hitx] == " ") {
+                    P2gameboard[hity][hitx] = "o";
+                }
+                else {
+                    P2gameboard[hity][hitx] = "x";
+                    counter2++;
+                }
+                num = 0;
+            System.out.print("    0   1   2   3   4   5   6   7   8   9");
+            while (num < 10) {
+                System.out.println();
+                System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
+                int num2 = 0;
+                
+                System.out.print(num + " ");
+                while (num2 < 10) {
+                    System.out.print("| " + P2gameboard[num][num2] + " ");
+                    num2++;
+                }
+                    System.out.print("|");
+                num++;
+                 }
+                System.out.println();
+                System.out.println("  |---|---|---|---|---|---|---|---|---|---|");
+            
 
-            num4++;
+            //pause two
+            //Thread.sleep(10000);
+
+            //victory screen
+            if (counter == 17 || counter2 ==17) {
+                System.out.println("Player one wins");
+            }
+            else {
+                System.out.println("Player two wins");
+            }
         }
     }
 }
